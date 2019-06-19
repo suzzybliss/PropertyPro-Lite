@@ -1,0 +1,234 @@
+.header {
+  padding: 40px; 
+  text-align: center; 
+  background: #1abc9c; 
+  color: white; 
+}
+
+.header h1 {
+  font-size: 40px;
+}
+
+
+.navbar {
+    /*overflow:hidden;*/
+    background-color:blue;
+    height: 45px;
+}
+
+/*.navbar .first {
+    float: left;
+    display: block;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a.active {
+    background-color:#4CAF50;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}*/
+/*.navbar-right {
+    float: right;
+}
+*/
+
+.navbar a:hover {
+    background-color:dimgrey;
+    color: black;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 13px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+/*.dropdown {
+  position: relative;
+  display: inline-block;
+}*/
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  /*background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+/*.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;*/
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+{box-sizing: border-box;}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.side {
+    float: left;
+    flex: 28%;
+    background-color:#f1f1f1;
+    padding: auto;
+}
+
+.side2 {
+    float: left;
+    flex: 50%;
+    background-color:#f1f1f1;
+    padding: auto;
+}
+
+.main {
+    float: left;
+    flex: 72%;
+    background-color:white;
+    padding: auto;
+}
+
+.main2 {
+    float: left;
+    flex: 50%;
+    background-color:white;
+    padding: auto;
+    
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+*#wrapper{
+ margin:0 auto;
+ padding:0px;
+ text-align:center;
+ width:300px;
+ float: left;
+}
+
+*#wrapper2
+{
+ margin:0 auto;
+ padding:0px;
+ text-align:left;
+ width:300px;
+float: left;
+}
+
+.form_div
+{
+width:330px;
+/*margin-left:0px;*/
+padding:21px;
+background-color:#3498DB;
+}
+
+.form_div2
+{
+width:623px;
+/*margin-left:0px;*/
+padding:21px;
+background-color:#3498DB;
+}
+
+
+.form_div .form_label
+{
+margin:15px;
+margin-bottom:30px;
+font-size:25px;
+font-weight:bold;
+color:white;
+text-decoration:underline;
+}
+
+.form_div2 .form_label
+{
+margin:15px;
+margin-bottom:30px;
+font-size:25px;
+font-weight:bold;
+color:white;
+text-decoration:underline;
+}
+
+.form_div input[type="text"],input[type="password"]
+{
+width:320px;
+height:30px;
+border-radius:2px;
+font-size:17px;
+padding-left:5px;
+border:none;
+}
+
+.form_div2 input[type="text"],input[type="password"]
+{
+width:320px;
+height:30px;
+border-radius:2px;
+font-size:17px;
+padding-left:5px;
+border:none;
+}
+
+.form_div .btn {
+    width:150px;
+    height:40px;
+    border:none;
+    border-radius:2px;
+    font-size:17px;
+    background-color:#616A6B;
+    border-bottom:3px solid #616A6B;
+    color:white;
+    font-weight:bold;
+}
+
+.form_div2 .btn {
+    width:150px;
+    height:40px;
+    border:none;
+    border-radius:2px;
+    font-size:17px;
+    background-color:#616A6B;
+    border-bottom:3px solid #616A6B;
+    color:white;
+    font-weight:bold;
+}
+
+.btn:hover {
+    background-color: blue;
+}
