@@ -32,6 +32,8 @@
     text-decoration: none;
     font-size: 20px;
 }*/
+
+
 /*.navbar-right {
     float: right;
 }
@@ -114,6 +116,7 @@
     flex: 72%;
     background-color:white;
     padding: auto;
+    
 }
 
 .main2 {
@@ -131,12 +134,13 @@
   clear: both;
 }
 
-*#wrapper{
+*#wrapper
+{
  margin:0 auto;
  padding:0px;
  text-align:center;
  width:300px;
- float: left;
+float: left;
 }
 
 *#wrapper2
@@ -163,7 +167,6 @@ width:623px;
 padding:21px;
 background-color:#3498DB;
 }
-
 
 .form_div .form_label
 {
@@ -195,15 +198,25 @@ padding-left:5px;
 border:none;
 }
 
-.form_div2 input[type="text"],input[type="password"]
-{
-width:320px;
-height:30px;
+.form_div2 .formBox input[type="text"],input[type="password"] {
+width:200px;
+height:25px;
 border-radius:2px;
 font-size:17px;
 padding-left:5px;
 border:none;
 }
+
+.form_div2 input[type="text"],input[type="password"]
+{
+width:410px;
+height:25px;
+border-radius:2px;
+font-size:17px;
+padding-left:5px;
+border:none;
+}
+
 
 .form_div .btn {
     width:150px;
@@ -232,3 +245,5 @@ border:none;
 .btn:hover {
     background-color: blue;
 }
+
+	
