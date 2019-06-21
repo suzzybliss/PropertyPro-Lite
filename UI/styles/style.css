@@ -249,8 +249,9 @@ border:none;
 }
 
 h2 {
-font-size: 30px;
+font-size: 25px;
 word-break: break-all;
+text-align: center;
 }
 
 .btn2 {
