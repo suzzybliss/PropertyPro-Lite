@@ -317,3 +317,24 @@ text-align: center;
    background-color: blue; 
 }
 
+#myBtnContainer .searchContainer input[type="text"] {
+    width: 250px;
+    height: 25px;
+}
+
+#myBtnContainer .searchContainer {
+    float: right;
+}
+
+#myBtnContainer .searchContainer button {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 32px;
+    font-size:14px;
+    background: dimgrey;
+}
+
+#myBtnContainer .searchContainer button:hover {
+    background: blue;
+}
+
