@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Property Pro Lite</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+    </head>
+    <body>
+         <div class="header">
+            <h1>Property Pro Lite</h1>
+            <p>A Property viewing website</p>
+            <p>Created by Susan Majebi @ Andela 2019 Bootcamp</p>
+        </div>
+        
+        <div class="navbar" id="topnav">
+            <a class="active" href="#gallery">Home</a>
+            <a href="AgentPostProperty.html">Upload Advert</a>
+            <a  href="AgentUpdateProperty.html">My Uploads</a>
+            <div class="navbar-right">
+                <a href="#profile">Profile</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+        
+        <h2>GALLERY</h2>
+        
+            <div id="myBtnContainer">
+            <div class="searchContainer">
+            <form action="">
+                 <input type="text" name="search" placeholder="Search..">
+                    <button type="submit">Search</button> 
+                </form>
+            </div>
+            <button class="btn2 active" onclick="filterSelection('all')"> Show all</button>
+            <button class="btn2" onclick="filterSelection('2Bedrooms')">2 Bedrooms</button>
+            <button class="btn2" onclick="filterSelection('3Bedrooms')"> 3 Bedrooms</button>
+            <button class="btn2" onclick="filterSelection('4Bedrooms')">4 Bedrooms</button>
+            <button class="btn2" onclick="filterSelection('miniFlat')">Mini Flat</button>
+            <button class="btn2" onclick="filterSelection('bungalow')">Bungalow</button>
+            <button class="btn2" onclick="filterSelection('villa')">Villa</button>
+        </div>
+        <div class="row">
+            <div class="column nature">
+                <div class="content">
+                    <p><img src="images/image1.JPG" alt="brown" style="width:100%"></p>
+                    <h4>Brown</h4>
+                    <p>Price: $1800 Location: Abuja, Nigeria</p>
+                    <p>Description: This property has a great view of...</p>
+                    <p><img src="images/image2.JPG" alt="white" style="width:100%"></p>
+                    <h4>White</h4>
+                    <p>Price: $1200</p>
+                    <p>Location: Abuja, Nigeria</p>
+                    <p>Description: This property has a great view of...</p>
+                    
+                </div>        
+        </div>
+            
+            <div class="column nature">
+                <div class="content">
+                    <img src="images/image2.JPG" alt="white" style="width:100%">
+                    <h4>White</h4>
+                    <p>Price: $1200</p>
+                    <p>Location: Abuja, Nigeria</p>
+                    <p>Description: This property has a great view of...</p>
+                    <p><img src="images/image1.JPG" alt="brown" style="width:100%"></p>
+                    <h4>Brown</h4>
+                    <p>Price: $1800</p>
+                    <p>Location: Abuja, Nigeria</p>
+                    <p>Description: This property has a great view of...</p>
+                </div>        
+        </div>
+            
+        <div class="column cars">
+            <div class="content">
+                <img src="images/image3.JPG" alt="interior" style="width:100%">
+                <h4>Interior</h4>
+                <p>Price: $2000</p>
+                <p>Location: Abuja, Nigeria</p>
+                <p>Description: This property has a great view of...</p>
+                <img src="images/image2.JPG" alt="white" style="width:100%">
+                <h4>White</h4>
+                <p>Price: $1200</p>
+                <p>Location: Abuja, Nigeria</p>
+                <p>Description: This property has a great view of...</p>
+            </div>
+        </div>
+            
+        </div>
+        
+                      
+        
+    </body>
+</html>
