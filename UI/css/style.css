@@ -322,9 +322,7 @@ text-align: center;
     height: 25px;
 }
 
-#myBtnContainer .searchContainer {
-    float: right;
-}
+
 
 #myBtnContainer .searchContainer button {
     padding-left: 15px;

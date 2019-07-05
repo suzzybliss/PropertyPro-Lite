@@ -10,7 +10,7 @@
          <div class="header">
             <h1>Property Pro Lite</h1>
             <p>A Property viewing website</p>
-            <p>Created by Susan Majebi @ Andela 2019 Bootcamp</p>
+            <p>Created @ Andela 2019 Bootcamp</p>
         </div>
         
         <div class="navbar" id="topnav">
@@ -20,27 +20,30 @@
             <a  href="myUploads">My Uploads</a>
             <div class="navbar-right">
                 <a href="#profile">Profile</a>
-                <a href="login.html">Logout</a>
+                <a href="index.html">Logout</a>
             </div>
         </div>
         
         <h2>GALLERY</h2>
-        
-            <div id="myBtnContainer">
+        <div id="myBtnContainer">
             <div class="searchContainer">
-            <form action="">
+           <form method = "get" action=""> 
                  <input type="text" name="search" placeholder="Search..">
                     <button type="submit">Search</button> 
-                </form>
+               
+                <p><select name="propType" id="Select_Property">
+	                   <option value="" selected disabled>Select Property Type</option>
+                       <option value="all">All</option>
+	                   <option value="2Bedrooms">2 Bedrooms</option>
+	                   <option value="3Bedrooms">3 Bedrooms</option>
+                       <option value="4Bedrooms">4 Bedrooms</option>
+                       <option value="MiniFlat">Mini Flat</option>
+                       <option value="Bungalow">Bungalow</option>
+                       <option value="Villa">Villa</option></select></p>
+            </form>
             </div>
-            <button class="btn2 active" onclick="filterSelection('all')"> Show all</button>
-            <button class="btn2" onclick="filterSelection('2Bedrooms')">2 Bedrooms</button>
-            <button class="btn2" onclick="filterSelection('3Bedrooms')"> 3 Bedrooms</button>
-            <button class="btn2" onclick="filterSelection('4Bedrooms')">4 Bedrooms</button>
-            <button class="btn2" onclick="filterSelection('miniFlat')">Mini Flat</button>
-            <button class="btn2" onclick="filterSelection('bungalow')">Bungalow</button>
-            <button class="btn2" onclick="filterSelection('villa')">Villa</button>
         </div>
+        
         <div class="row">
             <div class="column nature">
                 <div class="content">
