@@ -17,4 +17,9 @@ router.post('/property', authenticator, validator.property, property.create);
 // Get all property
 router.get('/property', authenticator, property.findAll);
 
+// Get a property
+router.get(
+    '/property/:propertyId', authenticator, validator.checkPropertyParams, property.findOne
+  );
+
 export default router;
