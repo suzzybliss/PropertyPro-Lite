@@ -11,7 +11,7 @@ export default {
       firstname, lastname, email, password
     } = req.body;
 
-    // check for existence
+    // check for existence of user
     const foundUser = Users.list.find(user => user.email === email);
     if (foundUser) return res.jsend.fail('Email address already exists.');
 
@@ -21,7 +21,7 @@ export default {
       firstname,
       lastname,
       email,
-      password: await bcrypt.hash(password, 10),
+      password: await bcrypt.hash(password, 8),
       phoneNumber,
       address,
       is_admin
@@ -49,6 +49,6 @@ export default {
     const token = jwt.sign({ userId: foundUser.id }, process.env.SECRET);
     res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
 
-    return res.jsend.success(token);
+    return res.jsend.success(token)
   }
 };
