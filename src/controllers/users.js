@@ -36,19 +36,5 @@ export default {
 
     return res.jsend.success(token);
   },
-  login: async (req, res) => {
-    const { email, password } = req.body;
 
-    const foundUser = Users.list.find(user => user.email === email);
-    if (!foundUser) return res.jsend.fail('user does not exist.');
-    
-    const match = await bcrypt.compare(password, foundUser.password);
-    if (!match) return res.jsend.fail('Login failed!');
-
-    // sign jwt and wrap in a cookie
-    const token = jwt.sign({ userId: foundUser.id }, process.env.SECRET);
-    res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
-
-    return res.jsend.success(token);
-  }
-};
+}
