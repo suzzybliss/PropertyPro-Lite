@@ -1,17 +1,15 @@
 import jwt from 'jsonwebtoken';
 
-export default (req, res, next) => {
-  const { token } = req.cookies;
-  if (!token) return res.jsend.error('Unauthenticated!');
+const secret = process.env.JWT_SECRET;
 
+export default (req, res, next) => {
   try {
-    const user = jwt.decode(token, process.env.SECRET);
-    req.user = user;
-    return next();
+    const token = req.header('token');
+    if (!token) return res.status(401).json({ status: 'error', error: 'Access Denied - No token provided' });
+
+    req.user = jwt.verify(token, secret);
+    next();
   } catch (error) {
-    return res.jsend.error({
-      message: 'authentication failed',
-      data: error
-    });
+    return res.status(400).json({ status: 'error', error: 'Invalid token' });
   }
 };
