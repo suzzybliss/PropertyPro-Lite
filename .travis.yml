@@ -2,12 +2,21 @@ language: node_js
 
 node_js:
   - stable
+dist: trusty
+cache:
+  directories:
+    - 'node_modules'
+
+addons:
+  chrome: stable
+  postgresql: 9.6
 
 install: npm install
+
+before_script:
+  - psql -c 'create database propertyprotest;' -U postgres
+  - npm i -g nyc
 
 script:
   - echo "test starts....."
   - npm run test
-
-after_script:
-  - npm install coveralls && npm run coverage
