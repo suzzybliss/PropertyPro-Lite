@@ -1,3 +1,7 @@
 node_modules/
 build/
-pckage-lock.json
+package-lock.json
+coverage
+.nyc_output
+tests
+.env
