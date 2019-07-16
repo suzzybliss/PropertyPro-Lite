@@ -1,0 +1,647 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Property-Pro-Lite API",
+        "description": "This is the API Documentation for Property Pro Lite - Property Pro Lite is a platform where people can create and/or search properties for sale or rent."
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:5008",
+    "basePath": "/api/v1",
+    "paths": {
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register user",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "name": "phone_number",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "name": "address",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "name": "image_url",
+                        "in": "formData",
+                        "type": "file",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#definitions/Authenticated"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#responses/Standard400Error"
+                    },
+                    "500": {
+                        "$ref": "#responses/Standard500Error"
+                    }
+                }
+            }
+        },
+        "/auth/signin": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "User login",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "valid login credentials",
+                        "schema": {
+                            "$ref": "#definitions/Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "login successful",
+                        "schema": {
+                            "$ref": "#definitions/Authenticated"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#responses/Standard400Error"
+                    },
+                    "500": {
+                        "$ref": "#responses/Standard500Error"
+                    }
+                }
+            }
+        },
+        "/property": {
+            "post": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Creating new property",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#parameters/token"
+                    },
+                    {
+                        "name": "price",
+                        "in": "formData",
+                        "type": "number",
+                        "required": true
+                    },
+                    {
+                        "name": "state",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "city",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "address",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "type": "string",
+                        "description": "property type include (e.g 2 bedroom, 3 bedroom)",
+                        "required": true
+                    },
+                    {
+                        "name": "image_url",
+                        "in": "formData",
+                        "type": "file",
+                        "multiple": true,
+                        "description": "deal type include (e.g for sale, for rent)"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "created",
+                        "schema": {
+                            "$ref": "#definitions/Property"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#responses/Standard400Error"
+                    },
+                    "401": {
+                        "$ref": "#responses/Standard401Error"
+                    },
+                    "403": {
+                        "$ref": "#responses/Standard403Error"
+                    },
+                    "500": {
+                        "$ref": "#responses/Standard500Error"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get all property adverts",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#definitions/GetProperties"
+                        }
+                    },
+                    "404": {
+                        "$ref": "#responses/Standard404Error"
+                    }
+                }
+            }
+        },
+        "/property/{property_id}": {
+            "get": {
+                "tags": [
+                    "Properties"
+                ],
+                "description": "Retrive single property advert by passing a url parameter",
+                "summary": "Get a specific property advert.",
+                "parameters": [
+                    {
+                        "$ref": "#parameters/property_id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#definitions/GetProperty"
+                        }
+                    },
+                    "404": {
+                        "$ref": "#responses/Standard404Error"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Update property",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#parameters/token"
+                    },
+                    {
+                        "$ref": "#parameters/property_id"
+                    },
+                    {
+                        "name": "price",
+                        "in": "formData",
+                        "type": "number"
+                    },
+                    {
+                        "name": "state",
+                        "in": "formData",
+                        "type": "string"
+                    },
+                    {
+                        "name": "city",
+                        "in": "formData",
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "formData",
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "type": "string",
+                        "description": "property type include (e.g 2 bedroom, 3 bedroom)"
+                    },
+                    {
+                        "name": "image_url",
+                        "in": "formData",
+                        "type": "file",
+                        "description": "deal type include (e.g for sale, for rent)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#definitions/Property"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#responses/Standard400Error"
+                    },
+                    "401": {
+                        "$ref": "#responses/Standard401Error"
+                    },
+                    "403": {
+                        "$ref": "#responses/Standard403Error"
+                    },
+                    "500": {
+                        "$ref": "#responses/Standard500Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Remove a specific property advert.",
+                "parameters": [
+                    {
+                        "$ref": "#parameters/token"
+                    },
+                    {
+                        "$ref": "#parameters/property_id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#responses/SuccessResponse"
+                    },
+                    "403": {
+                        "$ref": "#responses/Standard403Error"
+                    },
+                    "404": {
+                        "$ref": "#responses/Standard404Error"
+                    }
+                }
+            }
+        },
+        "/property/{property_id}/sold": {
+            "patch": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Mark a property as sold",
+                "parameters": [
+                    {
+                        "$ref": "#parameters/token"
+                    },
+                    {
+                        "$ref": "#parameters/property_id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#definitions/Property"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#responses/Standard400Error"
+                    },
+                    "401": {
+                        "$ref": "#responses/Standard401Error"
+                    },
+                    "403": {
+                        "$ref": "#responses/Standard403Error"
+                    },
+                    "500": {
+                        "$ref": "#responses/Standard500Error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Authenticated": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "example": "success"
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "token": {
+                            "type": "string",
+                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                        },
+                        "id": {
+                            "type": "integer",
+                            "example": 1
+                        },
+                        "email": {
+                            "type": "string",
+                            "example": "username@email.com"
+                        },
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        },
+                        "phone_number": {
+                            "type": "string"
+                        },
+                        "address": {
+                            "type": "string"
+                        },
+                        "image_url": {
+                            "type": "string"
+                        },
+                        "is_admin": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "created_on": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    }
+                }
+            }
+        },
+        "Login": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Property": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "owner": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "created_on": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "image_url": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "GetProperty": {
+            "properties": {
+                "status": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "city": {
+                            "type": "string"
+                        },
+                        "address": {
+                            "type": "string"
+                        },
+                        "price": {
+                            "type": "number"
+                        },
+                        "created_on": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "image_url": {
+                            "type": "string"
+                        },
+                        "owner": {
+                            "type": "number"
+                        },
+                        "owner_email": {
+                            "type": "string"
+                        },
+                        "owner_phone": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "GetProperties": {
+            "properties": {
+                "status": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "status": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "string"
+                            },
+                            "city": {
+                                "type": "string"
+                            },
+                            "address": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number"
+                            },
+                            "created_on": {
+                                "type": "string",
+                                "format": "date"
+                            },
+                            "image_url": {
+                                "type": "string"
+                            },
+                            "owner": {
+                                "type": "number"
+                            },
+                            "owner_email": {
+                                "type": "string"
+                            },
+                            "owner_phone": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Error": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "example": "error"
+                },
+                "error": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "responses": {
+        "Standard204Response": {
+            "description": "No content found"
+        },
+        "Standard400Error": {
+            "description": "Bad Request",
+            "schema": {
+                "$ref": "#definitions/Error"
+            }
+        },
+        "SuccessResponse": {
+            "description": "OK",
+            "schema": {
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Standard401Error": {
+            "description": "Access Denied - Invalid access token",
+            "schema": {
+                "$ref": "#definitions/Error"
+            }
+        },
+        "Standard403Error": {
+            "description": "Access Forbidden - No authorize access",
+            "schema": {
+                "$ref": "#definitions/Error"
+            }
+        },
+        "Standard404Error": {
+            "description": "Resource not found",
+            "schema": {
+                "$ref": "#definitions/Error"
+            }
+        },
+        "Standard500Error": {
+            "description": "An unexpected error has occur",
+            "schema": {
+                "$ref": "#definitions/Error"
+            }
+        }
+    },
+    "parameters": {
+        "token": {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "required": true
+        },
+        "property_id": {
+            "name": "property_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+        },
+        "user_id": {
+            "name": "user_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+        }
+    }
+}

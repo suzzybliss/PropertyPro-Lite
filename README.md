@@ -1,2 +1,4 @@
 # PropertyPro-Lite
 Andela Bootcamp Challenge for Cycle 46
+
+[![Build Status](https://travis-ci.org/suzzybliss/PropertyPro-Lite.svg?branch=develop)](https://travis-ci.org/suzzybliss/PropertyPro-Lite) [![Coverage Status](https://coveralls.io/repos/github/suzzybliss/PropertyPro-Lite/badge.svg)](https://coveralls.io/github/suzzybliss/PropertyPro-Lite)  [![Test Coverage](https://api.codeclimate.com/v1/badges/f82076aacd50b1389ac9/test_coverage)](https://codeclimate.com/github/suzzybliss/PropertyPro-Lite/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/f82076aacd50b1389ac9/maintainability)](https://codeclimate.com/github/suzzybliss/PropertyPro-Lite/maintainability)

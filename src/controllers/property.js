@@ -40,6 +40,7 @@ export const getAllProperty = async (req, res) => {
     if (!rows.length) return res.status(404).send({ status: 'error', error: 'Not Found' });
     return res.status(200).send({ status: 'success', data: rows });
   } catch (error) {
+    console.log(error);
     res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
   }
 };
@@ -102,7 +103,6 @@ export const updateProperty = async (req, res) => {
 
     return res.status(200).send({ status: 'success', data: rows[0] });
   } catch (error) {
-    console.log(error);
     res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
   }
 };
