@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS propertyprotest;
 CREATE DATABASE propertyprotest;
 \c propertyprotest;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS property;
 CREATE TABLE users
 (
     id SERIAL,
@@ -16,3 +17,17 @@ CREATE TABLE users
     image_url character varying,
     CONSTRAINT users_pkey PRIMARY KEY (id)
  );
+ CREATE TABLE property
+(
+    type character varying ,
+    status character varying DEFAULT 'available'::character varying,
+    state character varying,
+    price numeric,
+    owner integer,
+    id SERIAL,
+    created_on date DEFAULT CURRENT_DATE,
+    city character varying,
+    address character varying,
+    image_url character varying,
+    CONSTRAINT property_pkey PRIMARY KEY (id)
+)
