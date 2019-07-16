@@ -27,7 +27,19 @@ export const newProperty = async (req, res) => {
     ]);
     return res.status(201).send({ status: 'success', data: rows[0] });
   } catch (error) {
-    console.log(error)
+    res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
+  }
+};
+export const getAllProperty = async (req, res) => {
+  try {
+
+    const text = 'SELECT A.*, B.email as owner_email, B.phone_number as owner_phone_number '
+      + ' FROM property A INNER JOIN users B ON A.owner=B.id';
+    let { rows } = await db.query(text);
+    if (req.query.type) rows = rows.filter(p => p.type.toLowerCase() === req.query.type.toLowerCase())
+    if (!rows.length) return res.status(404).send({ status: 'error', error: 'Not Found' });
+    return res.status(200).send({ status: 'success', data: rows });
+  } catch (error) {
     res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
   }
 };
