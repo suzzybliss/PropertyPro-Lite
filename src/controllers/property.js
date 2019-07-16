@@ -60,10 +60,22 @@ export const markPropertyAsSold = async (req, res) => {
   try {
 
     const text = 'UPDATE property SET status=$1 WHERE id=$2 AND owner=$3 RETURNING *';
-    let { rows } = await db.query(text, ['sold',req.params.property_id, req.user.id]);
+    let { rows } = await db.query(text, ['sold', req.params.property_id, req.user.id]);
 
     if (!rows[0]) return res.status(404).send({ status: 'error', error: 'Not Found' });
     return res.status(200).send({ status: 'success', data: rows[0] });
+  } catch (error) {
+    res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
+  }
+};
+export const removeProprty = async (req, res) => {
+  try {
+
+    const text = 'DELETE FROM property WHERE id=$1 AND owner=$2 RETURNING *';
+    let { rows } = await db.query(text, [req.params.property_id, req.user.id]);
+
+    if (!rows[0]) return res.status(404).send({ status: 'error', error: 'Not Found' });
+    return res.status(200).send({ status: 'success', data: { message: 'The property has been removed' } });
   } catch (error) {
     res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
   }
