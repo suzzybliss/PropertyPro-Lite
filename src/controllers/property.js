@@ -56,3 +56,15 @@ export const getProperty = async (req, res) => {
     res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
   }
 };
+export const markPropertyAsSold = async (req, res) => {
+  try {
+
+    const text = 'UPDATE property SET status=$1 WHERE id=$2 AND owner=$3 RETURNING *';
+    let { rows } = await db.query(text, ['sold',req.params.property_id, req.user.id]);
+
+    if (!rows[0]) return res.status(404).send({ status: 'error', error: 'Not Found' });
+    return res.status(200).send({ status: 'success', data: rows[0] });
+  } catch (error) {
+    res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
+  }
+};
