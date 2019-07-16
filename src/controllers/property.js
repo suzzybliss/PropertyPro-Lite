@@ -80,3 +80,29 @@ export const removeProprty = async (req, res) => {
     res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
   }
 };
+export const updateProperty = async (req, res) => {
+  try {
+    const {
+      price, state, city, address, type
+    } = req.body;
+    const text = 'UPDATE property SET price=$1, state=$2,city=$3, address=$4, type=$5'
+      + ' WHERE id=$6 AND owner=$7 RETURNING *';
+
+    const { rows } = await db.query(text, [
+      price,
+      state,
+      city,
+      address,
+      type,
+      req.params.property_id,
+      req.user.id
+    ]);
+
+    if (!rows[0]) return res.status(404).send({ status: 'error', error: 'The property does not exist' });
+
+    return res.status(200).send({ status: 'success', data: rows[0] });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
+  }
+};

@@ -1,3 +1,7 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=3ee50c6ee46a9f34dc58dcd578505964be635f27cbbf8b2e3ff12cea64be3736
+
 language: node_js
 
 node_js:
@@ -16,7 +20,13 @@ install: npm install
 before_script:
   - psql -c 'create database propertyprotest;' -U postgres
   - npm i -g nyc
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
   - echo "test starts....."
   - npm run test
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
