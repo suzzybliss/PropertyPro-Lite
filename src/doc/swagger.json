@@ -187,6 +187,9 @@
                 "summary": "Get all property adverts",
                 "parameters": [
                     {
+                        "$ref": "#parameters/token"
+                    },
+                    {
                         "name": "type",
                         "in": "query",
                         "type": "string",
@@ -214,6 +217,9 @@
                 "description": "Retrive single property advert by passing a url parameter",
                 "summary": "Get a specific property advert.",
                 "parameters": [
+                    {
+                        "$ref": "#parameters/token"
+                    },
                     {
                         "$ref": "#parameters/property_id"
                     }
