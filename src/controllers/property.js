@@ -43,3 +43,16 @@ export const getAllProperty = async (req, res) => {
     res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
   }
 };
+export const getProperty = async (req, res) => {
+  try {
+
+    const text = 'SELECT A.*, B.email as owner_email, B.phone_number as owner_phone_number '
+      + ' FROM property A INNER JOIN users B ON A.owner=B.id WHERE A.id=$1';
+    let { rows } = await db.query(text, [req.params.property_id]);
+
+    if (!rows[0]) return res.status(404).send({ status: 'error', error: 'Not Found' });
+    return res.status(200).send({ status: 'success', data: rows[0] });
+  } catch (error) {
+    res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
+  }
+};
