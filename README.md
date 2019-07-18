@@ -5,7 +5,7 @@ Andela Bootcamp Challenge for Cycle 46
 
 Property Pro Lite is a platform where people can create and/or search properties for sale or rent.
 
-Technologies Used
+#Technologies Used
 Node - Server Runtime Engine
 Express - MVC Framework
 Postgres - Database
