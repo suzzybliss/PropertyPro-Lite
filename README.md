@@ -73,7 +73,7 @@ Set files as the name for the file upload control for these endpoint to upload a
 POST / localhost:5008/api/v1/property​ <br/>
 PATCH / localhost:5008/api/v1/property​/{property_id} <br/>
 
-User x-auth-token for sending valid token to protected endpoints
+User auth-token for sending valid token to protected endpoints
 
 # Default Admin User
 
