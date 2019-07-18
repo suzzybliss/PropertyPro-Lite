@@ -40,6 +40,7 @@ export const signUp = async (req, res) => {
     ]);
     return generateToken(rows[0], 201, res);
   } catch (error) {
+
     res.status(400).send({ status: 'error', error: 'Oops! something went wrong' });
   }
 };

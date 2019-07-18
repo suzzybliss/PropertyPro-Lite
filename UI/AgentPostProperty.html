@@ -1,57 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Property Pro Lite</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="styles/style.css">
-    </head>
-    <body>
-        <div class="header">
-            <h1>Property Pro Lite</h1>
-            <p>A Property viewing website</p>
-            <p>Created by Susan Majebi @ Andela 2019 Bootcamp</p>
+
+<head>
+    <title>Property Pro Lite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Property Pro Lite</h1>
+        <p>A Property viewing website</p>
+        <p>Created by Susan Majebi @ Andela 2019 Bootcamp</p>
+    </div>
+
+    <div class="navbar" id="topnav">
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a class="active" href="#propUploads">Upload Advert</a>
+        <a href="myUploads">My Uploads</a>
+        <div class="navbar-right">
+            <a href="#profile">Profile</a>
+            <a href="index.html">Logout</a>
         </div>
-        
-        <div class="navbar" id="topnav">
-            <a href="#home">Home</a>
-            <a href="#gallery">Gallery</a>
-            <a class="active" href="#propUploads">Upload Advert</a>
-            <a href="myUploads">My Uploads</a>
-            <div class="navbar-right">
-                <a href="#profile">Profile</a>
-                <a href="login.html">Logout</a>
+    </div>
+    <div class="row">
+        <div class="side">
+            <div><img src="images/image2.JPG" alt="A 3-bedroom Apartment" class="responsive"></div>
+        </div>
+        <div class="side">
+            <div class="uploadForm">
+                <h2 class="heading">Upload A Property</h2>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" name="image[]" multiple />
+                    <input type="submit" value="Upload Images" name="submit" />
+                    <p></p>
+                    <p><span class="box1" id="propertyPrice"><label id="price">Price($): </label> <input
+                                type="text">`</span> <span class="box2" id="propertyName"><label id="name">Name:
+                            </label><input type="text"></span></p>
+                    <p><span class="box3" id="propertyAddress"><label id="address">Address Line: </label><input
+                                type="text"></span> <span class="box4" id="propertyCity"><label id="city">City:
+                            </label><input type="text"></span></p>
+                    <p><span class="box5" id="propertyState"><label id="state">State: </label><input type="text"></span>
+                        <span class="box6" propertyCountry><label id="country">Country: </label><input
+                                type="text"></span></p>
+                    <p><select name="propCategory" id="selectCategory">
+                            <option value="" selected disabled>Select Category</option>
+                            <option value="bedroom2">2 Bedroom</option>
+                            <option value="bedroom3">3 Bedroom</option>
+                            <option value="bedroom1">4 Bedroom</option>
+                            <option value="miniFlat">Mini Flat</option>
+                            <option value="bungalow">Bungalow</option>
+                            <option value="villa">Villa</option>
+                        </select></p>
+                    <p><textarea id="propDescription" placeholder="Describe this property" cols="60"
+                            rows="8"></textarea></p>
+                    <p><button class="btn2">Upload Advert</button></p>
+                </form>
             </div>
         </div>
-         <div class="row">
-             <div class="side">
-                <div><img src="images/image2.JPG" alt="A 3-bedroom Apartment" class="responsive"></div>
-            </div>
-             <div class="side">
-                    <div class="uploadForm">
-                        <h2 class="heading">Upload A Property</h2>
-                        <form method="post" enctype="multipart/form-data">
-                        <input type="file" name="image[]" multiple/>
-                        <input type="submit" value="Upload Images" name="submit"/>
-                            <p></p>
-                            <p><span class="box1" id="propertyPrice"><label id="price">Price($):  </label>  <input  type="text">`</span>  <span class="box2" id="propertyName"><label id="name">Name:  </label><input type="text"></span></p>
-                        <p><span class="box3" id="propertyAddress"><label id="address">Address Line:  </label><input  type="text"></span>  <span class="box4" id="propertyCity"><label id="city">City:  </label><input type="text"></span></p>
-                        <p><span class="box5" id="propertyState"><label id="state">State:  </label><input  type="text"></span>  <span class="box6" propertyCountry><label id="country">Country:  </label><input type="text"></span></p>
-                        <p><select name="propCategory" id="selectCategory">
-                        <option value="" selected disabled>Select Category</option>
-                        <option value="bedroom2">2 Bedroom</option>
-                        <option value="bedroom3">3 Bedroom</option>
-                        <option value="bedroom1">4 Bedroom</option>
-                        <option value="miniFlat">Mini Flat</option>
-                        <option value="bungalow">Bungalow</option>
-                        <option value="villa" >Villa</option></select></p>
-                        <p><textarea id="propDescription" placeholder="Describe this property" cols="60" rows="8" ></textarea></p>
-                        <p><button class="btn2">Upload Advert</button></p> 
-                        </form>
-                 </div>
-            </div>
-        </div>
-            
-        
-    </body>
+    </div>
+
+
+</body>
+
 </html>
